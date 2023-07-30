@@ -71,8 +71,8 @@ export const Header1 = styled.h1<TypographyProps>`
   font-size: 38px;
 
   ${media.tabletBig`
-  line-height: 86px;
-  font-size: 72px;
+    line-height: 86px;
+    font-size: 72px;
   `}
 `;
 

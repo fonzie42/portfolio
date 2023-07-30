@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { css } from "styled-components";
 
 const device = {
@@ -5,9 +6,11 @@ const device = {
 };
 
 export const media = {
-  tabletBig: (...args) => css`
+  tabletBig: (...args: any) => css`
     @media (min-width: ${device.tabletBig}) {
-      ${css(...args)};
+      ${css`
+        ${args}
+      `};
     }
   `,
 };

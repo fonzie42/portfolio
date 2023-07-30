@@ -33,10 +33,7 @@ import { COLORS, COLORS_DARK_MODE } from "./ui/colors";
 import { useState } from "react";
 
 function App() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  const [theme, _setTheme] = useState<"light" | "dark">("dark");
   return (
     <ThemeProvider theme={theme === "light" ? COLORS : COLORS_DARK_MODE}>
       <GlobalStyle />
