@@ -32,13 +32,28 @@ import { Logo } from "./ui/logo";
 import { COLORS, COLORS_DARK_MODE } from "./ui/colors";
 import { useState } from "react";
 
+import { Toggle } from "./ui/Toggle";
+
 function App() {
-  const [theme, _setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  const isDarkThemeSelected = theme === "dark";
+  const onToggleCallback = () =>
+    setTheme(isDarkThemeSelected ? "light" : "dark");
+
   return (
-    <ThemeProvider theme={theme === "light" ? COLORS : COLORS_DARK_MODE}>
+    <ThemeProvider theme={isDarkThemeSelected ? COLORS_DARK_MODE : COLORS}>
+      <Toggle
+        checked={isDarkThemeSelected}
+        onToggleCallback={onToggleCallback}
+      />
+
       <GlobalStyle />
       <div>
-        <Header1 color="primary-alt">Hiya 👋🏻 I'm Afonso. </Header1>
+        <Header1 color="primary-alt">Hiya 👋🏻 I'm Afonso </Header1>
+        <Header6 color="primary-alt">
+          And this page is still a work in progress!{" "}
+        </Header6>
         <Header4 color="primary-alt">
           I am a Dev @ Ambush. I can help you design your product, develop your
           brand, or systematize your design flow.
@@ -54,31 +69,31 @@ function App() {
       </div>
       <div>
         <Logo
-          src={theme === "light" ? mingoExtraSmall : mingoExtraSmallDark}
+          src={isDarkThemeSelected ? mingoExtraSmallDark : mingoExtraSmall}
           className="logo react"
           alt="React logo"
         />
 
         <Logo
-          src={theme === "light" ? mingoMonochrome : mingoMonochromeDark}
+          src={isDarkThemeSelected ? mingoMonochromeDark : mingoMonochrome}
           className="logo react"
           alt="React logo"
         />
 
         <Logo
-          src={theme === "light" ? mingoSimplified : mingoSimplifiedDark}
+          src={isDarkThemeSelected ? mingoSimplifiedDark : mingoSimplified}
           className="logo react"
           alt="React logo"
         />
 
         <Logo
-          src={theme === "light" ? mingoSmall : mingoSmallDark}
+          src={isDarkThemeSelected ? mingoSmallDark : mingoSmall}
           className="logo react"
           alt="React logo"
         />
 
         <Logo
-          src={theme === "light" ? mingo : mingoDark}
+          src={isDarkThemeSelected ? mingoDark : mingo}
           className="logo react"
           alt="React logo"
         />
