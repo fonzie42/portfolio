@@ -1,13 +1,13 @@
-import mingoExtraSmall from "./assets/logo/mingo_extra_small.svg";
-import mingoMonochrome from "./assets/logo/mingo_monochrome.svg";
-import mingoSimplified from "./assets/logo/mingo_simplified.svg";
-import mingoSmall from "./assets/logo/mingo_small.svg";
-import mingo from "./assets/logo/mingo.svg";
-import mingoExtraSmallDark from "./assets/logo/mingo_extra_small_dark.svg";
-import mingoMonochromeDark from "./assets/logo/mingo_monochrome_dark.svg";
-import mingoSimplifiedDark from "./assets/logo/mingo_simplified_dark.svg";
-import mingoSmallDark from "./assets/logo/mingo_small_dark.svg";
-import mingoDark from "./assets/logo/mingo_dark.svg";
+import mingoExtraSmall from "/logo/mingo_extra_small.svg";
+import mingoMonochrome from "/logo/mingo_monochrome.svg";
+import mingoSimplified from "/logo/mingo_simplified.svg";
+import mingoSmall from "/logo/mingo_small.svg";
+import mingo from "/logo/mingo.svg";
+import mingoExtraSmallDark from "/logo/mingo_extra_small_dark.svg";
+import mingoMonochromeDark from "/logo/mingo_monochrome_dark.svg";
+import mingoSimplifiedDark from "/logo/mingo_simplified_dark.svg";
+import mingoSmallDark from "/logo/mingo_small_dark.svg";
+import mingoDark from "/logo/mingo_dark.svg";
 import { ThemeProvider } from "styled-components";
 
 import "./App.css";
@@ -33,7 +33,7 @@ import { COLORS, COLORS_DARK_MODE } from "./ui/colors";
 import { useState } from "react";
 
 function App() {
-  const [theme, _setTheme] = useState<"light" | "dark">("dark");
+  const [theme, _setTheme] = useState<"light" | "dark">("light");
   return (
     <ThemeProvider theme={theme === "light" ? COLORS : COLORS_DARK_MODE}>
       <GlobalStyle />
