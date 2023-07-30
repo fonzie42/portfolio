@@ -13,7 +13,7 @@ const getStyleForColor = (color: TypographyColors) => {
     primary: css`
       color: ${({ theme }) => theme.primary};
     `,
-    "primary-alt": css`'
+    "primary-alt": css`
       color: ${({ theme }) => theme.primaryAlt};
     `,
     alt: css`'
