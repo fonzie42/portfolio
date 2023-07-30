@@ -19,4 +19,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.main};
   }
+
+  ::selection {
+    color: ${({ theme }) => theme.accent5};
+    background: ${({ theme }) => theme.alt2};
+  }
+
+  * {
+    transition: 0.3s;
+  }
 `;
