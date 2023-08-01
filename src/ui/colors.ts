@@ -13,8 +13,8 @@ export const COLORS = {
 
 export const COLORS_DARK_MODE = {
   main: "#1C1D35",
-  primaryAlt: "#1B5183",
-  primary: "#D0F0EF",
+  primaryAlt: "#D0F0EF",
+  primary: "#A3F6FC",
   accent: "#00C7F2",
   accent2: "#00D8F6",
   accent3: "#00E4F9",
