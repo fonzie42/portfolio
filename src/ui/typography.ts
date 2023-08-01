@@ -152,6 +152,9 @@ export const Header6 = styled.h6<TypographyProps>`
 
 export const Paragraph = styled.p<TypographyProps>`
   ${({ color }) => color && getStyleForColor(color)}
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent: 2em;
 
   font-family: Inter;
   font-weight: 400;
