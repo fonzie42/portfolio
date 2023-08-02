@@ -28,13 +28,22 @@ export const GlobalStyle = createGlobalStyle`
   p,
   code,
   button {
-    
     color: ${({ theme }) => theme.primaryAlt};
   }
 
   body {
     background: ${({ theme }) => theme.main};
   }
+
+  a {
+    text-decoration: underline;
+    color: ${({ theme }) => theme.alt};
+    
+    &:hover {
+      color: ${({ theme }) => theme.accent5};
+    }
+  }
+
 
   ::selection {
     color: ${({ theme }) => theme.accent5};
