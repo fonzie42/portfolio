@@ -22,6 +22,12 @@ export const Logos = () => (
     />
 
     <Logo
+      src={isDarkThemeSelected ? mingoSmallDark : mingoSmall}
+      className="logo react"
+      alt="React logo"
+    />
+
+    <Logo
       src={isDarkThemeSelected ? mingoMonochromeDark : mingoMonochrome}
       className="logo react"
       alt="React logo"
@@ -29,12 +35,6 @@ export const Logos = () => (
 
     <Logo
       src={isDarkThemeSelected ? mingoSimplifiedDark : mingoSimplified}
-      className="logo react"
-      alt="React logo"
-    />
-
-    <Logo
-      src={isDarkThemeSelected ? mingoSmallDark : mingoSmall}
       className="logo react"
       alt="React logo"
     />
