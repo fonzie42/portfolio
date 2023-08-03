@@ -7,7 +7,7 @@ export const Toggle: FC<ToggleProps> = ({ checked, onToggleCallback }) => {
     <LabelWrapper checked={checked}>
       <ToggleInput
         type="checkbox"
-        checked={checked}
+        defaultChecked={checked}
         onClick={onToggleCallback}
       />
     </LabelWrapper>
