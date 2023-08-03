@@ -9,21 +9,24 @@ import { Typography } from "./pages/typography.tsx";
 import { Logos } from "./pages/logos.tsx";
 import { Home } from "./pages/home.tsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/portfolio/typography",
-    element: <Typography />,
-  },
-  {
-    path: "/portfolio/logos",
-    element: <Logos />,
-  },
-  {
-    path: "/portfolio",
-    element: <Home />,
-    errorElement: <ErrorPage />,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/typography",
+      element: <Typography />,
+    },
+    {
+      path: "/logos",
+      element: <Logos />,
+    },
+    {
+      path: "/",
+      element: <Home />,
+      errorElement: <ErrorPage />,
+    },
+  ],
+  { basename: import.meta.env.DEV ? "/" : "/portfolio/" }
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
