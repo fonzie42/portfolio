@@ -3,7 +3,7 @@ import { Header1, Header4, Header6, Paragraph } from "../ui/typography";
 
 import { Toggle } from "../ui/Toggle";
 import { useContext } from "react";
-import { ThemeContext } from "../context/themeContextProvider";
+import { ThemeContext } from "../context/theme-context-provider";
 
 export const Home = () => {
   const { toggleThemeCallback, theme } = useContext(ThemeContext);
