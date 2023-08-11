@@ -1,5 +1,5 @@
 import "./App.css";
-import { GlobalStyle } from "./theme/globalStyle";
+import { GlobalStyle } from "./theme/global-style";
 
 import { ThemeContextProvider } from "./context/themeContextProvider";
 
