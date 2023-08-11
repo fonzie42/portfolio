@@ -13,7 +13,7 @@ import {
   Subtitle,
   TextWrapper,
   TypographyWrapper,
-} from "../ui/typography";
+} from "ui/typography";
 
 export const Typography = () => (
   <div>

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { media } from "../theme/media";
-import { getRGBA } from "./colors";
+import { media } from "theme/media";
+import { getRGBA } from "ui/colors";
 
 type TypographyColors = "primary" | "primary-alt" | "alt";
 
