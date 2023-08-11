@@ -9,7 +9,7 @@ import mingoSimplifiedDark from "/logo/mingo_simplified_dark.svg";
 import mingoSmallDark from "/logo/mingo_small_dark.svg";
 import mingoDark from "/logo/mingo_dark.svg";
 
-import { Logo } from "../ui/logo";
+import { Logo } from "ui/logo";
 
 const isDarkThemeSelected = false;
 
