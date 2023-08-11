@@ -4,10 +4,10 @@ import App from "./App.tsx";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage } from "./pages/error-not-found.tsx";
-import { Typography } from "./pages/typography.tsx";
-import { Logos } from "./pages/logos.tsx";
-import { Home } from "./pages/home.tsx";
+import { ErrorPage } from "./pages/error-not-found";
+import { Typography } from "./pages/typography";
+import { Logos } from "./pages/logos";
+import { Home } from "./pages/home";
 
 const router = createBrowserRouter(
   [
