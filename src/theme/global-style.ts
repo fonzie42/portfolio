@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6{
     color: ${({ theme }) => theme.primary};
+    margin: 16px 0;
   }
 
   p,
