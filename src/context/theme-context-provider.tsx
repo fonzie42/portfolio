@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { COLORS, COLORS_DARK_MODE } from "../ui/colors";
+import { COLORS, COLORS_DARK_MODE } from "ui/colors";
 
 export const ThemeContext = createContext({
   toggleThemeCallback: () => {},
