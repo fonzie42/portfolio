@@ -11,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
   h6,
   code,
   button {
-    margin: 0;
     padding: 0;
+    margin: 16px 0;
   }
   
   h1,
@@ -23,7 +23,6 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6{
     color: ${({ theme }) => theme.primary};
-    margin: 16px 0;
   }
 
   p,
