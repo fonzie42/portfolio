@@ -1,9 +1,22 @@
-import { useContext, useState, useRef, useEffect, useCallback } from "react";
+import {
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+} from "react";
 import * as RadixSelect from "@radix-ui/react-select";
 import { ThemeContext } from "context/theme-context-provider";
 import { Toggle } from "ui/Toggle";
 import { Badge } from "ui/Badge";
 import { Experience } from "components/Experience";
+import {
+  AnimatedMingoLogo,
+  AnimatedMingoFull,
+  AnimatedMingoMonochrome,
+  AnimatedMingoSmall,
+  AnimatedMingoEmblem,
+} from "components/AnimatedMingoLogo";
 import { COLORS, COLORS_DARK_MODE } from "ui/colors";
 import {
   Header0,
@@ -108,6 +121,7 @@ import {
   TransitionLabel,
   TransitionItem,
   CopiedToast,
+  AnimationReplayButton,
   BreakpointGrid,
   BreakpointRow,
   BreakpointBar,
@@ -257,6 +271,8 @@ export const DesignSystem = () => {
   const isDark = theme === "dark";
   const colors = isDark ? DARK_COLORS : LIGHT_COLORS;
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
+  const [logoAnimKey, setLogoAnimKey] = useState(0);
+  const [waveAnimKey, setWaveAnimKey] = useState(0);
   const reveal = useScrollReveal();
 
   const handleCopyColor = (hex: string) => {
@@ -307,6 +323,67 @@ export const DesignSystem = () => {
             </LogoCard>
           ))}
         </LogoGrid>
+
+        <SubSection>
+          <SubSectionTitle>Entrance Animation</SubSectionTitle>
+          <SectionDescription>
+            Staggered entrance for every logo variant. Each part reveals in
+            sequence: frame, body, beak, eye, then ornaments. Respects
+            prefers-reduced-motion.
+          </SectionDescription>
+
+          <LogoHeroWrapper>
+            <AnimatedMingoFull size={200} animationKey={logoAnimKey} />
+          </LogoHeroWrapper>
+
+          <LogoGrid>
+            <LogoCard>
+              <AnimatedMingoLogo size={140} animationKey={logoAnimKey} />
+              <LogoLabel>Simplified</LogoLabel>
+            </LogoCard>
+            <LogoCard>
+              <AnimatedMingoMonochrome size={140} animationKey={logoAnimKey} />
+              <LogoLabel>Monochrome</LogoLabel>
+            </LogoCard>
+            <LogoCard>
+              <AnimatedMingoSmall size={120} animationKey={logoAnimKey} />
+              <LogoLabel>Small</LogoLabel>
+            </LogoCard>
+            <LogoCard>
+              <AnimatedMingoEmblem size={64} animationKey={logoAnimKey} />
+              <LogoLabel>Emblem</LogoLabel>
+            </LogoCard>
+          </LogoGrid>
+
+          <AnimationReplayButton
+            onClick={() => setLogoAnimKey((k) => k + 1)}
+          >
+            Replay
+          </AnimationReplayButton>
+        </SubSection>
+
+        <SubSection>
+          <SubSectionTitle>Wave Animation</SubSectionTitle>
+          <SectionDescription>
+            After the entrance, the concentric arcs on the body ripple outward
+            in a continuous loop. The innermost arc pulses first, cascading
+            to the outermost.
+          </SectionDescription>
+
+          <LogoHeroWrapper>
+            <AnimatedMingoFull
+              size={200}
+              animationKey={waveAnimKey}
+              wave
+            />
+          </LogoHeroWrapper>
+
+          <AnimationReplayButton
+            onClick={() => setWaveAnimKey((k) => k + 1)}
+          >
+            Replay
+          </AnimationReplayButton>
+        </SubSection>
       </Section>
 
       {/* Colors */}

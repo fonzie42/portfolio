@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import { Shake } from "ui/shake";
 import { Header1, Header2, Header4, Header6, Paragraph } from "ui/typography";
+import { Logo } from "ui/logo";
 
 import { Toggle } from "ui/Toggle";
 import { ThemeContext } from "context/theme-context-provider";
@@ -9,14 +10,23 @@ import { EXPERIENCES } from "constants";
 import { Experience } from "components/Experience";
 import { ExperienceWrapper } from "./home.styled";
 
+import mingoLight from "/logo/mingo.svg";
+import mingoDark from "/logo/mingo_dark.svg";
+
 export const Home = () => {
   const { toggleThemeCallback, theme } = useContext(ThemeContext);
+  const isDark = theme === "dark";
 
   return (
     <div>
       <Toggle
-        checked={theme === "dark"}
+        checked={isDark}
         onToggleCallback={toggleThemeCallback}
+      />
+
+      <Logo
+        src={isDark ? mingoDark : mingoLight}
+        alt="Mingo logo"
       />
 
       <Header1 color="primary-alt">
