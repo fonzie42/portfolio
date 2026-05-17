@@ -3,7 +3,7 @@ import { GlobalStyle } from "./theme/global-style";
 
 import { ThemeContextProvider } from "context/theme-context-provider";
 
-function App({ children }: { children: JSX.Element }) {
+function App({ children }: { children: React.ReactNode }) {
   return (
     <ThemeContextProvider>
       <GlobalStyle />

@@ -12,7 +12,7 @@ export const ThemeContext = createContext({
 export const ThemeContextProvider = ({
   children,
 }: {
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
 }) => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
