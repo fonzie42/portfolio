@@ -464,6 +464,60 @@ export const SubSectionTitle = styled.h3`
   `}
 `;
 
+export const LinkShowcase = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+export const LinkRow = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+
+  ${media.tabletBig`
+    gap: 24px;
+  `}
+`;
+
+export const LinkLabel = styled.span`
+  font-family: Noto Sans Mono;
+  font-size: 12px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.5;
+  text-transform: uppercase;
+  min-width: 64px;
+
+  ${media.tabletBig`
+    font-size: 14px;
+    min-width: 80px;
+  `}
+`;
+
+export const LinkSample = styled.a`
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+
+  ${media.tabletBig`
+    font-size: 20px;
+  `}
+`;
+
+export const LinkDisabled = styled.span`
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.4;
+  text-decoration: underline;
+  cursor: not-allowed;
+
+  ${media.tabletBig`
+    font-size: 20px;
+  `}
+`;
+
 export const SampleTextBlock = styled.div`
   padding: 32px;
   border-radius: 12px;

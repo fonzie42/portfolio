@@ -73,6 +73,11 @@ import {
   SubSection,
   SubSectionTitle,
   SampleTextBlock,
+  LinkShowcase,
+  LinkRow,
+  LinkLabel,
+  LinkSample,
+  LinkDisabled,
 } from "./design-system.styled";
 
 const LOGO_VARIANTS = [
@@ -491,6 +496,37 @@ export const DesignSystem = () => {
             <LargeButton>Large</LargeButton>
           </ButtonGrid>
         </ButtonRow>
+      </Section>
+
+      {/* Links */}
+      <Section>
+        <SectionTitle>Links</SectionTitle>
+        <SectionDescription>
+          Anchor styles use the alt color by default and shift to accent5 on
+          hover. All links are underlined for accessibility.
+        </SectionDescription>
+        <Divider />
+
+        <LinkShowcase>
+          <LinkRow>
+            <LinkLabel>Default</LinkLabel>
+            <LinkSample href="#">View portfolio</LinkSample>
+          </LinkRow>
+          <LinkRow>
+            <LinkLabel>Inline</LinkLabel>
+            <Paragraph
+              style={{ textIndent: 0, textAlign: "left", margin: 0 }}
+            >
+              Check out my work on{" "}
+              <a href="#">GitHub</a> or connect with me on{" "}
+              <a href="#">LinkedIn</a>.
+            </Paragraph>
+          </LinkRow>
+          <LinkRow>
+            <LinkLabel>Disabled</LinkLabel>
+            <LinkDisabled>Unavailable link</LinkDisabled>
+          </LinkRow>
+        </LinkShowcase>
       </Section>
 
       {/* Components */}

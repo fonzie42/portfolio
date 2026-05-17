@@ -37,10 +37,14 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: underline;
-    color: ${({ theme }) => theme.alt};
-    
+    color: ${({ theme }) => theme.accent};
+
+    &:visited {
+      color: ${({ theme }) => theme.accent};
+    }
+
     &:hover {
-      color: ${({ theme }) => theme.accent5};
+      color: ${({ theme }) => theme.primary};
     }
   }
 
