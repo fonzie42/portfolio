@@ -10,8 +10,9 @@ import {
 export const PageWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 24px 80px;
+  padding: 24px 16px 80px;
   text-align: left;
+  overflow-x: hidden;
 
   ${media.tabletBig`
     padding: 48px 48px 120px;
@@ -20,11 +21,17 @@ export const PageWrapper = styled.div`
 
 export const PageHeader = styled.header`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
   margin-bottom: 48px;
   padding-bottom: 24px;
   border-bottom: 1px solid ${({ theme }) => theme.accent5};
+
+  ${media.tablet`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  `}
 `;
 
 export const BackLink = styled.a`
@@ -51,9 +58,10 @@ export const Section = styled.section`
 
 export const SectionTitle = styled.h2`
   font-family: Playfair Display;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 400;
   margin-bottom: 8px;
+  word-break: break-word;
 
   ${media.tabletBig`
     font-size: 44px;
@@ -62,11 +70,11 @@ export const SectionTitle = styled.h2`
 
 export const SectionDescription = styled.p`
   font-family: Inter;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   color: ${({ theme }) => theme.primaryAlt};
   opacity: 0.7;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
   ${media.tabletBig`
     font-size: 18px;
@@ -85,7 +93,7 @@ export const LogoGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: 32px;
+  gap: 24px;
 
   ${media.tabletBig`
     gap: 48px;
@@ -123,8 +131,8 @@ export const LogoHeroWrapper = styled.div`
   background: ${({ theme }) => theme.main};
   border: 1px solid ${({ theme }) => theme.accent5};
   border-radius: 16px;
-  padding: 48px;
-  margin-bottom: 32px;
+  padding: 32px;
+  margin-bottom: 24px;
 
   ${media.tabletBig`
     padding: 80px;
@@ -135,7 +143,12 @@ export const LogoHeroWrapper = styled.div`
 export const ColorGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 12px;
+
+  ${media.tablet`
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  `}
 
   ${media.tabletBig`
     grid-template-columns: repeat(5, 1fr);
@@ -206,10 +219,10 @@ export const ColorHex = styled.div`
 
 export const TypoRow = styled.div`
   display: grid;
-  grid-template-columns: 48px 1fr;
-  column-gap: 16px;
+  grid-template-columns: 36px 1fr;
+  column-gap: 12px;
   align-items: baseline;
-  padding: 16px 0;
+  padding: 12px 0;
   border-bottom: 1px solid ${({ theme }) => theme.accent5}20;
 
   ${media.tabletBig`
@@ -235,6 +248,8 @@ export const TypoSample = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  overflow: hidden;
+  word-break: break-word;
 
   & > *:first-child {
     margin: 0;
@@ -274,11 +289,14 @@ export const TypoColumnHeader = styled.div`
 
 export const ButtonGrid = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 
-  ${media.tabletBig`
+  ${media.tablet`
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 24px;
   `}
 `;
@@ -518,11 +536,11 @@ export const LinkRow = styled.div`
 
 export const LinkLabel = styled.span`
   font-family: Noto Sans Mono;
-  font-size: 12px;
+  font-size: 11px;
   color: ${({ theme }) => theme.primaryAlt};
   opacity: 0.5;
   text-transform: uppercase;
-  min-width: 64px;
+  min-width: 56px;
 
   ${media.tabletBig`
     font-size: 14px;
@@ -557,7 +575,7 @@ export const LinkDisabled = styled.span`
 export const FormGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
 
   ${media.tabletBig`
     grid-template-columns: 1fr 1fr;
@@ -596,6 +614,8 @@ const inputBase = css`
   padding: 12px 16px;
   outline: none;
   transition: border-color 0.2s;
+  box-sizing: border-box;
+  max-width: 100%;
 
   &::placeholder {
     color: ${({ theme }) => theme.primaryAlt};
@@ -872,11 +892,72 @@ export const TransitionItem = styled.div`
   align-items: center;
 `;
 
+export const BreakpointGrid = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+export const BreakpointRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+export const BreakpointBar = styled.div<{ $width: number; $maxWidth: number }>`
+  height: 32px;
+  width: ${({ $width, $maxWidth }) => ($width / $maxWidth) * 100}%;
+  background: ${({ theme }) => theme.accent5};
+  border-radius: 6px;
+  min-width: 24px;
+  position: relative;
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${({ theme }) => theme.accent3};
+  }
+`;
+
+export const BreakpointValue = styled.span`
+  font-family: Noto Sans Mono;
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primaryAlt};
+  white-space: nowrap;
+
+  ${media.tabletBig`
+    font-size: 14px;
+  `}
+`;
+
+export const BreakpointName = styled.span`
+  font-family: Inter;
+  font-size: 12px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.6;
+  min-width: 48px;
+
+  ${media.tabletBig`
+    font-size: 14px;
+    min-width: 64px;
+  `}
+`;
+
+export const BreakpointNote = styled.div`
+  font-family: Inter;
+  font-size: 13px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.5;
+  margin-top: 8px;
+`;
+
 export const SampleTextBlock = styled.div`
-  padding: 32px;
+  padding: 16px;
   border-radius: 12px;
   border: 1px solid ${({ theme }) => theme.accent5}40;
   margin-top: 24px;
+  overflow: hidden;
+  word-break: break-word;
 
   ${media.tabletBig`
     padding: 48px;

@@ -108,6 +108,12 @@ import {
   TransitionLabel,
   TransitionItem,
   CopiedToast,
+  BreakpointGrid,
+  BreakpointRow,
+  BreakpointBar,
+  BreakpointValue,
+  BreakpointName,
+  BreakpointNote,
 } from "./design-system.styled";
 
 const LOGO_VARIANTS = [
@@ -836,6 +842,34 @@ export const DesignSystem = () => {
           shortText="First Engineering Manager at Ravn, defining the role from scratch while leading multiple concurrent client engagements."
           text="Serving as the first Engineering Manager at Ravn, a software consultancy, building the role and its frameworks from scratch. Leading a cross-functional team across multiple concurrent client engagements simultaneously, each with distinct tech stacks and stakeholder dynamics."
         />
+      </Section>
+
+      {/* Breakpoints */}
+      <Section ref={reveal}>
+        <SectionTitle>Breakpoints</SectionTitle>
+        <SectionDescription>
+          Mobile-first breakpoints. Base styles target the smallest screens,
+          then scale up at each threshold.
+        </SectionDescription>
+        <Divider />
+
+        <BreakpointGrid>
+          {[
+            { name: "mobile", value: 480 },
+            { name: "tablet", value: 768 },
+            { name: "desktop", value: 1024 },
+            { name: "wide", value: 1440 },
+          ].map(({ name, value }) => (
+            <BreakpointRow key={name}>
+              <BreakpointName>{name}</BreakpointName>
+              <BreakpointBar $width={value} $maxWidth={1440} />
+              <BreakpointValue>{value}px</BreakpointValue>
+            </BreakpointRow>
+          ))}
+        </BreakpointGrid>
+        <BreakpointNote>
+          Usage: media.tablet, media.desktop, media.wide
+        </BreakpointNote>
       </Section>
 
       {/* Spacing */}

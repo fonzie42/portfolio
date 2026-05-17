@@ -19,11 +19,12 @@ export const ExperienceHeaderRow = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
-  padding: 24px;
+  gap: 12px;
+  padding: 16px;
 
   ${media.tabletBig`
     padding: 32px;
+    gap: 16px;
   `}
 `;
 
@@ -48,8 +49,8 @@ export const Chevron = styled.button<{ $expanded: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
   margin-top: 4px;
   border-radius: 50%;
@@ -86,7 +87,7 @@ export const ExperienceBodyInner = styled.div`
 `;
 
 export const ExperienceContent = styled.div`
-  padding: 0 24px 24px;
+  padding: 0 16px 16px;
 
   ${media.tabletBig`
     padding: 0 32px 32px;

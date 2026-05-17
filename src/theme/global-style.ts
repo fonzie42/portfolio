@@ -33,6 +33,11 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${({ theme }) => theme.main};
+    overflow-x: hidden;
+  }
+
+  #root {
+    overflow-x: hidden;
   }
 
   a {
@@ -52,6 +57,10 @@ export const GlobalStyle = createGlobalStyle`
   ::selection {
     color: ${({ theme }) => theme.accent5};
     background: ${({ theme }) => theme.alt2};
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 
   * {
