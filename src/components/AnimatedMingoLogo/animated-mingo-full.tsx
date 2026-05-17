@@ -48,11 +48,11 @@ export const AnimatedMingoFull = ({
       $bodyFirst
       width={size}
       height={Math.round(size * (250 / 176))}
-      viewBox="0 0 176 250"
+      viewBox="-6 -6 188 262"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clipPath="url(#animated-mingo-full-clip)">
+      <g>
         <g className="frame">
           <path
             d="M158.198 128.474C156.818 128.474 155.698 129.593 155.698 130.974V176.598C155.698 214.15 125.256 244.591 87.7046 244.591C50.1528 244.591 19.7109 214.15 19.7109 176.598V160.974C19.7109 159.593 18.5916 158.474 17.2109 158.474C15.8302 158.474 14.7109 159.593 14.7109 160.974V176.598C14.7109 216.911 47.3913 249.591 87.7046 249.591C128.018 249.591 160.698 216.911 160.698 176.598V130.974C160.698 129.593 159.579 128.474 158.198 128.474Z"
@@ -223,12 +223,6 @@ export const AnimatedMingoFull = ({
           />
         </g>
       </g>
-
-      <defs>
-        <clipPath id="animated-mingo-full-clip">
-          <rect width="175.492" height="249.591" fill="white" />
-        </clipPath>
-      </defs>
     </AnimatedSvg>
   );
 };
