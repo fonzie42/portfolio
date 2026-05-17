@@ -8,9 +8,14 @@ import { ErrorPage } from "pages/error-not-found";
 import { Typography } from "pages/typography";
 import { Logos } from "pages/logos";
 import { Home } from "pages/home";
+import { DesignSystem } from "pages/design-system";
 
 const router = createBrowserRouter(
   [
+    {
+      path: "/design-system",
+      element: <DesignSystem />,
+    },
     {
       path: "/typography",
       element: <Typography />,

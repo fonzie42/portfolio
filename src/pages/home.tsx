@@ -22,45 +22,32 @@ export const Home = () => {
       <Header1 color="primary-alt">
         Hey <Shake>👋🏻</Shake> I'm Afonso
       </Header1>
-      <Header6 color="primary-alt">
-        And this page is still a work in progress!
-      </Header6>
 
       <Header4 color="primary-alt">
-        I am a Dev @ Ambush. I can help you design your product, develop your
-        brand, or systematize your design flow.
+        Engineering Manager at Ravn. Full-stack developer turned people leader,
+        focused on delivery, team health, and engineering quality.
       </Header4>
 
       <Paragraph>
-        Hey there! I'm Afonso, a software developer who's all about making
-        awesome user experiences and delivering rock-solid software. My thing is
-        understanding what users need and building apps that just make sense.
-        Seriously, a happy user is the heart of great software.
+        I'm a software engineer and engineering manager based in Brazil, with 8+
+        years of experience building web and mobile applications. I've worked
+        across fintech, healthcare, real estate, fitness, and enterprise, always
+        focused on delivering reliable software and great user experiences.
       </Paragraph>
 
       <Paragraph>
-        I stick to the best rules of the software game, testing like a pro and
-        sweating the details. Teamwork and talking? You bet. I love joining up
-        with all sorts of teams to make projects shine.
+        My stack is rooted in React, React Native, and TypeScript, but I've
+        built backends with Elixir, Node.js, and serverless architectures too.
+        I care about testing, design systems, and writing code that teams can
+        maintain long after the first deploy.
       </Paragraph>
 
       <Paragraph>
-        And it doesn't stop when we launch. I'm all about keeping apps in
-        tip-top shape and ready for whatever's next. Inside my portfolio, you'll
-        see projects that show how seriously I take my work. Give it a look and
-        see how I can bring a boost to your software projects.
-      </Paragraph>
-
-      <Paragraph>
-        Oh, and a bit about me: I'm a pro at getting what different businesses
-        need, no matter the industry – restaurants, farming, real estate,
-        banking, startups, you name it. I'm adaptable, ready to jump into any
-        team. I'm all about quality, making sure what I deliver is top-notch and
-        user-friendly.
-      </Paragraph>
-      <Paragraph>
-        Thank you for visiting, and I look forward to the opportunity to
-        collaborate on exciting projects together.
+        Today I lead cross-functional teams across multiple client engagements
+        at Ravn, a software consultancy. I bridge the gap between engineering,
+        product, and stakeholders, while also shaping the frameworks that define
+        how engineering management works at the company. I hold a Computer
+        Science degree from UFRGS and speak Portuguese, English, and Spanish.
       </Paragraph>
 
       <ExperienceWrapper>
@@ -72,11 +59,10 @@ export const Home = () => {
       ))}
 
       <Header6 color="primary-alt">
-        If you want to take a look, here are the design tokens being used:
+        If you want to take a look at the design tokens being used:
       </Header6>
 
-      <a href="typography/"> Typography </a>
-      <a href="logos/"> Logos </a>
+      <a href="design-system/"> Design System </a>
     </div>
   );
 };
