@@ -3,6 +3,7 @@ import * as RadixSelect from "@radix-ui/react-select";
 import { ThemeContext } from "context/theme-context-provider";
 import { Toggle } from "ui/Toggle";
 import { Badge } from "ui/Badge";
+import { Experience } from "components/Experience";
 import { COLORS, COLORS_DARK_MODE } from "ui/colors";
 import {
   Header0,
@@ -682,6 +683,25 @@ export const DesignSystem = () => {
             </ComponentShowcase>
           </ComponentCard>
         </ComponentGrid>
+      </Section>
+
+      {/* Experience Card */}
+      <Section>
+        <SectionTitle>Experience Card</SectionTitle>
+        <SectionDescription>
+          An expandable card used on the home page to showcase work history.
+          Click to toggle between a short summary and the full description.
+        </SectionDescription>
+        <Divider />
+
+        <Experience
+          title="Engineering Manager at Ravn"
+          months={4}
+          industries={["consultancy", "AI", "mobile"]}
+          tags={["engineering management", "React Native", "Expo", "NestJS"]}
+          shortText="First Engineering Manager at Ravn, defining the role from scratch while leading multiple concurrent client engagements."
+          text="Serving as the first Engineering Manager at Ravn, a software consultancy, building the role and its frameworks from scratch. Leading a cross-functional team across multiple concurrent client engagements simultaneously, each with distinct tech stacks and stakeholder dynamics."
+        />
       </Section>
 
       {/* Spacing */}

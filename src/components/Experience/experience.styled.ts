@@ -1,31 +1,93 @@
 import styled from "styled-components";
+import { media } from "theme/media";
 
-export const ExperienceButton = styled.button`
-  border: 2px solid ${({ theme }) => theme.primary + "20"};
-  border-left: 2px solid transparent;
-  border-right: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-  background: none;
-
-  padding: 32px 16px;
-  border-radius: 0;
-  margin: 0;
+export const ExperienceCard = styled.div<{ $expanded: boolean }>`
+  border: 2px solid ${({ theme }) => theme.accent5};
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s, background 0.3s;
+  background: ${({ $expanded, theme }) =>
+    $expanded ? theme.accent5 + "20" : "transparent"};
 
   &:hover {
-    border: 2px solid ${({ theme }) => theme.primary};
-    border-radius: 16px;
+    border-color: ${({ theme }) => theme.accent3};
   }
-
-  transition: border-radius 0.2s;
 `;
 
-export const FutureImage = styled.div`
-  background: red;
-  width: 200px;
-  height: 200px;
-  float: left;
-  margin-right: 16px;
-  margin-top: 16px;
+export const ExperienceToggle = styled.button`
+  width: 100%;
+  background: none;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 24px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  ${media.tabletBig`
+    padding: 32px;
+  `}
 `;
 
-export const ExperienceHeader = styled.div``;
+export const ExperienceHeader = styled.div`
+  flex: 1;
+  min-width: 0;
+`;
+
+export const ExperienceMeta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+`;
+
+export const ExperienceTags = styled.div`
+  margin-top: 12px;
+`;
+
+export const Chevron = styled.span<{ $expanded: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.accent5};
+  transition: transform 0.3s ease, background 0.2s;
+  transform: rotate(${({ $expanded }) => ($expanded ? "180deg" : "0deg")});
+
+  &::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid ${({ theme }) => theme.primaryAlt};
+  }
+`;
+
+export const ExperienceBody = styled.div<{ $expanded: boolean }>`
+  display: grid;
+  grid-template-rows: ${({ $expanded }) => ($expanded ? "1fr" : "0fr")};
+  transition: grid-template-rows 0.35s ease;
+`;
+
+export const ExperienceBodyInner = styled.div`
+  overflow: hidden;
+`;
+
+export const ExperienceContent = styled.div`
+  padding: 0 24px 24px;
+
+  ${media.tabletBig`
+    padding: 0 32px 32px;
+  `}
+`;
