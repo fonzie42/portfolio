@@ -114,6 +114,10 @@ import {
   BreakpointValue,
   BreakpointName,
   BreakpointNote,
+  ElevationGrid,
+  ElevationCard,
+  ElevationLevel,
+  ElevationSpec,
 } from "./design-system.styled";
 
 const LOGO_VARIANTS = [
@@ -842,6 +846,35 @@ export const DesignSystem = () => {
           shortText="First Engineering Manager at Ravn, defining the role from scratch while leading multiple concurrent client engagements."
           text="Serving as the first Engineering Manager at Ravn, a software consultancy, building the role and its frameworks from scratch. Leading a cross-functional team across multiple concurrent client engagements simultaneously, each with distinct tech stacks and stakeholder dynamics."
         />
+      </Section>
+
+      {/* Shadows / Elevation */}
+      <Section ref={reveal}>
+        <SectionTitle>Shadows</SectionTitle>
+        <SectionDescription>
+          Four elevation levels for layering UI elements. Shadow color is
+          derived from primaryAlt in light mode and black in dark mode.
+        </SectionDescription>
+        <Divider />
+
+        <ElevationGrid>
+          <ElevationCard $level={0}>
+            <ElevationLevel>Level 0</ElevationLevel>
+            <ElevationSpec>No shadow</ElevationSpec>
+          </ElevationCard>
+          <ElevationCard $level={1}>
+            <ElevationLevel>Level 1</ElevationLevel>
+            <ElevationSpec>Cards, inputs</ElevationSpec>
+          </ElevationCard>
+          <ElevationCard $level={2}>
+            <ElevationLevel>Level 2</ElevationLevel>
+            <ElevationSpec>Dropdowns, popovers</ElevationSpec>
+          </ElevationCard>
+          <ElevationCard $level={3}>
+            <ElevationLevel>Level 3</ElevationLevel>
+            <ElevationSpec>Modals, dialogs</ElevationSpec>
+          </ElevationCard>
+        </ElevationGrid>
       </Section>
 
       {/* Breakpoints */}

@@ -951,6 +951,65 @@ export const BreakpointNote = styled.div`
   margin-top: 8px;
 `;
 
+export const ElevationGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  ${media.tablet`
+    grid-template-columns: repeat(2, 1fr);
+  `}
+
+  ${media.tabletBig`
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  `}
+`;
+
+export const ElevationCard = styled.div<{ $level: number }>`
+  background: ${({ theme }) => theme.main};
+  border-radius: 12px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid ${({ theme }) => theme.accent5}30;
+  box-shadow: ${({ $level, theme }) => {
+    const color = theme.mode === "dark" ? "0, 0, 0" : "66, 29, 49";
+    switch ($level) {
+      case 0:
+        return "none";
+      case 1:
+        return `0 1px 3px rgba(${color}, 0.08), 0 1px 2px rgba(${color}, 0.06)`;
+      case 2:
+        return `0 4px 6px rgba(${color}, 0.08), 0 2px 4px rgba(${color}, 0.06)`;
+      case 3:
+        return `0 10px 20px rgba(${color}, 0.1), 0 4px 8px rgba(${color}, 0.06)`;
+      case 4:
+        return `0 20px 40px rgba(${color}, 0.12), 0 8px 16px rgba(${color}, 0.08)`;
+      default:
+        return "none";
+    }
+  }};
+`;
+
+export const ElevationLevel = styled.div`
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primary};
+`;
+
+export const ElevationSpec = styled.div`
+  font-family: Noto Sans Mono;
+  font-size: 11px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.5;
+  text-align: center;
+  line-height: 1.5;
+`;
+
 export const SampleTextBlock = styled.div`
   padding: 16px;
   border-radius: 12px;
