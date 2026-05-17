@@ -1,4 +1,5 @@
 export const COLORS = {
+  mode: "light" as const,
   main: "#F9E9E4",
   primary: "#733347",
   primaryAlt: "#421D31",
@@ -12,6 +13,7 @@ export const COLORS = {
 };
 
 export const COLORS_DARK_MODE = {
+  mode: "dark" as const,
   main: "#1C1D35",
   primaryAlt: "#D0F0EF",
   primary: "#A3F6FC",
