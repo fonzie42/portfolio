@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import * as RadixSelect from "@radix-ui/react-select";
 import { ThemeContext } from "context/theme-context-provider";
 import { Toggle } from "ui/Toggle";
 import { Badge } from "ui/Badge";
@@ -78,6 +79,20 @@ import {
   LinkLabel,
   LinkSample,
   LinkDisabled,
+  FormGrid,
+  FormField,
+  FormLabel,
+  FormHint,
+  TextInput,
+  TextArea,
+  StyledSelectTrigger,
+  StyledSelectContent,
+  StyledSelectViewport,
+  StyledSelectItem,
+  StyledSelectIcon,
+  InputDisabled,
+  InputError,
+  FormError,
 } from "./design-system.styled";
 
 const LOGO_VARIANTS = [
@@ -140,6 +155,42 @@ const SPACING = [
   { label: "64px", value: 64 },
   { label: "96px", value: 96 },
 ];
+
+const CustomSelect = ({
+  options,
+  placeholder,
+}: {
+  options: string[];
+  placeholder: string;
+}) => (
+  <RadixSelect.Root>
+    <RadixSelect.Trigger asChild>
+      <StyledSelectTrigger>
+        <RadixSelect.Value placeholder={placeholder} />
+        <RadixSelect.Icon>
+          <StyledSelectIcon />
+        </RadixSelect.Icon>
+      </StyledSelectTrigger>
+    </RadixSelect.Trigger>
+    <RadixSelect.Portal>
+      <RadixSelect.Content asChild position="popper" sideOffset={4}>
+        <StyledSelectContent>
+          <RadixSelect.Viewport asChild>
+            <StyledSelectViewport>
+              {options.map((opt) => (
+                <RadixSelect.Item key={opt} value={opt} asChild>
+                  <StyledSelectItem>
+                    <RadixSelect.ItemText>{opt}</RadixSelect.ItemText>
+                  </StyledSelectItem>
+                </RadixSelect.Item>
+              ))}
+            </StyledSelectViewport>
+          </RadixSelect.Viewport>
+        </StyledSelectContent>
+      </RadixSelect.Content>
+    </RadixSelect.Portal>
+  </RadixSelect.Root>
+);
 
 export const DesignSystem = () => {
   const { toggleThemeCallback, theme } = useContext(ThemeContext);
@@ -496,6 +547,57 @@ export const DesignSystem = () => {
             <LargeButton>Large</LargeButton>
           </ButtonGrid>
         </ButtonRow>
+      </Section>
+
+      {/* Form Inputs */}
+      <Section>
+        <SectionTitle>Form Inputs</SectionTitle>
+        <SectionDescription>
+          Input fields, textareas, and selects. All share the same border,
+          focus, and hover treatment using accent tokens.
+        </SectionDescription>
+        <Divider />
+
+        <FormGrid>
+          <FormField>
+            <FormLabel>Text Input</FormLabel>
+            <TextInput type="text" placeholder="Enter your name" />
+            <FormHint>Standard single-line input</FormHint>
+          </FormField>
+
+          <FormField>
+            <FormLabel>Email Input</FormLabel>
+            <TextInput type="email" placeholder="you@example.com" />
+          </FormField>
+
+          <FormField>
+            <FormLabel>Select</FormLabel>
+            <CustomSelect
+              options={["React", "TypeScript", "Styled Components"]}
+              placeholder="Choose an option"
+            />
+          </FormField>
+
+          <FormField>
+            <FormLabel>Disabled</FormLabel>
+            <InputDisabled
+              type="text"
+              placeholder="Cannot edit"
+              disabled
+            />
+          </FormField>
+
+          <FormField>
+            <FormLabel>Error State</FormLabel>
+            <InputError type="text" defaultValue="Invalid input" />
+            <FormError>This field is required</FormError>
+          </FormField>
+
+          <FormField>
+            <FormLabel>Textarea</FormLabel>
+            <TextArea placeholder="Write something longer here..." />
+          </FormField>
+        </FormGrid>
       </Section>
 
       {/* Links */}

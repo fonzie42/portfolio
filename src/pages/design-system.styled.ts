@@ -518,6 +518,172 @@ export const LinkDisabled = styled.span`
   `}
 `;
 
+export const FormGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  ${media.tabletBig`
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  `}
+`;
+
+export const FormField = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const FormLabel = styled.label`
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primary};
+`;
+
+export const FormHint = styled.span`
+  font-family: Inter;
+  font-size: 12px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.5;
+`;
+
+const inputBase = css`
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.primaryAlt};
+  background: ${({ theme }) => theme.main};
+  border: 2px solid ${({ theme }) => theme.accent5};
+  border-radius: 8px;
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.primaryAlt};
+    opacity: 0.4;
+  }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.accent3};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.accent};
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.main} inset;
+    -webkit-text-fill-color: ${({ theme }) => theme.primaryAlt};
+    border-color: ${({ theme }) => theme.accent5};
+    transition: background-color 5000s ease-in-out 0s;
+  }
+`;
+
+export const TextInput = styled.input`
+  ${inputBase}
+`;
+
+export const TextArea = styled.textarea`
+  ${inputBase}
+  resize: vertical;
+  min-height: 100px;
+`;
+
+export const StyledSelectTrigger = styled.button`
+  ${inputBase}
+  margin: 0;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  &[data-state="open"] {
+    border-color: ${({ theme }) => theme.accent};
+  }
+
+  & > span[style] {
+    color: ${({ theme }) => theme.primaryAlt};
+    opacity: 0.4;
+  }
+`;
+
+export const StyledSelectContent = styled.div`
+  background: ${({ theme }) => theme.main};
+  border: 2px solid ${({ theme }) => theme.accent5};
+  border-radius: 8px;
+  padding: 4px 0;
+  overflow: hidden;
+  z-index: 10;
+  width: var(--radix-select-trigger-width);
+
+  &,
+  & * {
+    transition: none;
+    animation: none;
+  }
+`;
+
+export const StyledSelectViewport = styled.div`
+  max-height: 200px;
+`;
+
+export const StyledSelectItem = styled.div`
+  font-family: Inter;
+  font-size: 16px;
+  color: ${({ theme }) => theme.primaryAlt};
+  padding: 10px 16px;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.15s;
+
+  &[data-highlighted] {
+    background: ${({ theme }) => theme.accent5};
+    color: ${({ theme }) => theme.main};
+  }
+
+  &[data-state="checked"] {
+    color: ${({ theme }) => theme.primary};
+    font-weight: 500;
+  }
+`;
+
+export const StyledSelectIcon = styled.span`
+  display: inline-flex;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid ${({ theme }) => theme.primaryAlt};
+`;
+
+export const InputDisabled = styled.input`
+  ${inputBase}
+  opacity: 0.4;
+  cursor: not-allowed;
+`;
+
+export const InputError = styled.input`
+  ${inputBase}
+  border-color: ${({ theme }) => theme.accent};
+  box-shadow: 0 0 8px 2px ${({ theme }) =>
+    theme.mode === "dark" ? theme.accent5 : theme.accent5};
+`;
+
+export const FormError = styled.span`
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.accent};
+`;
+
 export const SampleTextBlock = styled.div`
   padding: 32px;
   border-radius: 12px;

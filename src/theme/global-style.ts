@@ -57,4 +57,10 @@ export const GlobalStyle = createGlobalStyle`
   * {
     transition: 0.3s;
   }
+
+  [data-radix-popper-content-wrapper],
+  [data-radix-select-content] {
+    transition: none !important;
+    animation: none !important;
+  }
 `;
