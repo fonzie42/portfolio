@@ -5,6 +5,7 @@ export const ExperienceCard = styled.div<{ $expanded: boolean }>`
   border: 2px solid ${({ theme }) => theme.accent5};
   border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 48px;
   transition: border-color 0.2s, background 0.3s;
   background: ${({ $expanded, theme }) =>
     $expanded ? theme.accent5 + "20" : "transparent"};
@@ -14,19 +15,12 @@ export const ExperienceCard = styled.div<{ $expanded: boolean }>`
   }
 `;
 
-export const ExperienceToggle = styled.button`
-  width: 100%;
-  background: none;
-  border: none;
-  border-radius: 0;
-  margin: 0;
-  padding: 24px;
-  cursor: pointer;
-  text-align: left;
+export const ExperienceHeaderRow = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+  padding: 24px;
 
   ${media.tabletBig`
     padding: 32px;
@@ -50,18 +44,25 @@ export const ExperienceTags = styled.div`
   margin-top: 12px;
 `;
 
-export const Chevron = styled.span<{ $expanded: boolean }>`
+export const Chevron = styled.button<{ $expanded: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
   margin-top: 4px;
   border-radius: 50%;
+  border: none;
   background: ${({ theme }) => theme.accent5};
+  cursor: pointer;
+  padding: 0;
   transition: transform 0.3s ease, background 0.2s;
   transform: rotate(${({ $expanded }) => ($expanded ? "180deg" : "0deg")});
+
+  &:hover {
+    background: ${({ theme }) => theme.accent3};
+  }
 
   &::after {
     content: "";

@@ -4,7 +4,7 @@ import { Header3, Header6, Paragraph } from "ui/typography";
 import { Badge } from "ui/Badge";
 import {
   ExperienceCard,
-  ExperienceToggle,
+  ExperienceHeaderRow,
   ExperienceHeader,
   ExperienceMeta,
   ExperienceTags,
@@ -23,11 +23,16 @@ export const Experience: FC<ExperienceProps> = ({
   shortText,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleHeaderClick = () => {
+    if (!isExpanded) setIsExpanded(true);
+  };
+
   return (
     <ExperienceCard $expanded={isExpanded}>
-      <ExperienceToggle
-        onClick={() => setIsExpanded(!isExpanded)}
-        aria-expanded={isExpanded}
+      <ExperienceHeaderRow
+        onClick={handleHeaderClick}
+        style={{ cursor: isExpanded ? "default" : "pointer" }}
       >
         <ExperienceHeader>
           <Header3 style={{ margin: 0 }}>{title}</Header3>
@@ -43,8 +48,16 @@ export const Experience: FC<ExperienceProps> = ({
           </ExperienceTags>
           <Paragraph style={{ margin: "12px 0 0" }}>{shortText}</Paragraph>
         </ExperienceHeader>
-        <Chevron $expanded={isExpanded} />
-      </ExperienceToggle>
+        <Chevron
+          $expanded={isExpanded}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsExpanded(!isExpanded);
+          }}
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? "Collapse" : "Expand"}
+        />
+      </ExperienceHeaderRow>
 
       <ExperienceBody $expanded={isExpanded}>
         <ExperienceBodyInner>

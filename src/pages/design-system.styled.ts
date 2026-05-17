@@ -1,5 +1,11 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { media } from "theme/media";
+import {
+  pressEffect,
+  floatOnHover,
+  copyFlash,
+  scrollReveal,
+} from "ui/micro-interactions";
 
 export const PageWrapper = styled.div`
   max-width: 1200px;
@@ -36,6 +42,7 @@ export const BackLink = styled.a`
 
 export const Section = styled.section`
   margin-bottom: 64px;
+  ${scrollReveal}
 
   ${media.tabletBig`
     margin-bottom: 96px;
@@ -95,6 +102,7 @@ export const LogoCard = styled.div`
 export const LogoImage = styled.img<{ $size?: string }>`
   height: ${({ $size }) => $size || "120px"};
   transition: 0.3s;
+  ${floatOnHover}
 
   &:hover {
     filter: drop-shadow(0 0 12px ${({ theme }) => theme.accent5});
@@ -135,7 +143,34 @@ export const ColorGrid = styled.div`
   `}
 `;
 
-export const ColorSwatch = styled.div<{ $color: string }>``;
+export const ColorSwatch = styled.div<{ $color: string }>`
+  cursor: pointer;
+  position: relative;
+
+  &:hover > div:first-child {
+    transform: scale(1.03);
+  }
+`;
+
+export const CopiedToast = styled.span`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.main};
+  padding: 4px 8px;
+  border-radius: 4px;
+  animation: ${copyFlash} 0.8s ease forwards;
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 0;
+  }
+`;
 
 
 export const ColorBlock = styled.div<{ $color: string }>`
@@ -258,6 +293,7 @@ const ButtonBase = css`
   align-items: center;
   justify-content: center;
   line-height: 1;
+  ${pressEffect}
 
   &:hover {
     border-color: unset;
@@ -682,6 +718,158 @@ export const FormError = styled.span`
   font-size: 12px;
   font-weight: 500;
   color: ${({ theme }) => theme.accent};
+`;
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const slideUp = keyframes`
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
+const pulse = keyframes`
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+`;
+
+const scaleIn = keyframes`
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+`;
+
+export const AnimationGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  ${media.tabletBig`
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  `}
+`;
+
+export const AnimationCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.accent5}40;
+`;
+
+export const AnimationLabel = styled.div`
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primary};
+`;
+
+export const AnimationSpec = styled.div`
+  font-family: Noto Sans Mono;
+  font-size: 12px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.5;
+`;
+
+export const AnimationDemo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: ${({ theme }) => theme.accent5};
+  color: ${({ theme }) => theme.main};
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const ShakeDemo = styled(AnimationDemo)`
+  animation: ${keyframes`
+    35% { transform: rotate(0deg); }
+    40% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    60% { transform: rotate(5deg); }
+    65% { transform: rotate(0deg); }
+  `} 3s ease-in-out infinite;
+  transform-origin: bottom right;
+`;
+
+export const FadeInDemo = styled(AnimationDemo)`
+  animation: ${fadeIn} 2s ease infinite;
+`;
+
+export const SlideUpDemo = styled(AnimationDemo)`
+  animation: ${slideUp} 2s ease infinite;
+`;
+
+export const PulseDemo = styled(AnimationDemo)`
+  animation: ${pulse} 2s ease-in-out infinite;
+`;
+
+export const ScaleInDemo = styled(AnimationDemo)`
+  animation: ${scaleIn} 2s ease infinite;
+`;
+
+export const AnimationReplayButton = styled.button`
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.primaryAlt};
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.accent5};
+  border-radius: 6px;
+  padding: 4px 12px;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+    border-color: ${({ theme }) => theme.accent3};
+  }
+`;
+
+export const TransitionRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+`;
+
+export const TransitionBox = styled.div<{ $duration: string }>`
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: ${({ theme }) => theme.accent5};
+  transition: transform ${({ $duration }) => $duration} ease,
+    background ${({ $duration }) => $duration} ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.15);
+    background: ${({ theme }) => theme.accent};
+  }
+`;
+
+export const TransitionLabel = styled.div`
+  font-family: Noto Sans Mono;
+  font-size: 13px;
+  color: ${({ theme }) => theme.primaryAlt};
+  opacity: 0.6;
+  text-align: center;
+  margin-top: 8px;
+`;
+
+export const TransitionItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const SampleTextBlock = styled.div`

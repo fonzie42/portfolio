@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useRef, useEffect, useCallback } from "react";
 import * as RadixSelect from "@radix-ui/react-select";
 import { ThemeContext } from "context/theme-context-provider";
 import { Toggle } from "ui/Toggle";
@@ -94,6 +94,20 @@ import {
   InputDisabled,
   InputError,
   FormError,
+  AnimationGrid,
+  AnimationCard,
+  AnimationLabel,
+  AnimationSpec,
+  ShakeDemo,
+  FadeInDemo,
+  SlideUpDemo,
+  PulseDemo,
+  ScaleInDemo,
+  TransitionRow,
+  TransitionBox,
+  TransitionLabel,
+  TransitionItem,
+  CopiedToast,
 } from "./design-system.styled";
 
 const LOGO_VARIANTS = [
@@ -193,10 +207,53 @@ const CustomSelect = ({
   </RadixSelect.Root>
 );
 
+const useScrollReveal = () => {
+  const ref = useRef<HTMLElement[]>([]);
+
+  const addRef = useCallback((el: HTMLElement | null) => {
+    if (el && !ref.current.includes(el)) ref.current.push(el);
+  }, []);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReduced) {
+      ref.current.forEach((el) => el.setAttribute("data-visible", "true"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-visible", "true");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    ref.current.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return addRef;
+};
+
 export const DesignSystem = () => {
   const { toggleThemeCallback, theme } = useContext(ThemeContext);
   const isDark = theme === "dark";
   const colors = isDark ? DARK_COLORS : LIGHT_COLORS;
+  const [copiedHex, setCopiedHex] = useState<string | null>(null);
+  const reveal = useScrollReveal();
+
+  const handleCopyColor = (hex: string) => {
+    navigator.clipboard.writeText(hex);
+    setCopiedHex(hex);
+    setTimeout(() => setCopiedHex(null), 800);
+  };
 
   return (
     <PageWrapper>
@@ -211,7 +268,7 @@ export const DesignSystem = () => {
       </PageHeader>
 
       {/* Logos */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Logo</SectionTitle>
         <SectionDescription>
           The Mingo flamingo mark comes in five variants for different contexts.
@@ -243,7 +300,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Colors */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Colors</SectionTitle>
         <SectionDescription>
           {isDark ? "Dark" : "Light"} mode palette. Toggle the theme to see both
@@ -254,8 +311,13 @@ export const DesignSystem = () => {
 
         <ColorGrid>
           {colors.map(({ name, hex }) => (
-            <ColorSwatch key={name} $color={hex}>
+            <ColorSwatch
+              key={name}
+              $color={hex}
+              onClick={() => handleCopyColor(hex)}
+            >
               <ColorBlock $color={hex} />
+              {copiedHex === hex && <CopiedToast>Copied!</CopiedToast>}
               <ColorMeta>
                 <ColorName>{name}</ColorName>
                 <ColorHex>{hex.toUpperCase()}</ColorHex>
@@ -266,7 +328,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Typography */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Typography</SectionTitle>
         <SectionDescription>
           Three font families: Playfair Display for display and headings, Inter
@@ -522,7 +584,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Buttons */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Buttons</SectionTitle>
         <SectionDescription>
           Button variants for different levels of emphasis. Primary for main
@@ -551,7 +613,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Form Inputs */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Form Inputs</SectionTitle>
         <SectionDescription>
           Input fields, textareas, and selects. All share the same border,
@@ -602,7 +664,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Links */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Links</SectionTitle>
         <SectionDescription>
           Anchor styles use the alt color by default and shift to accent5 on
@@ -633,7 +695,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Components */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Components</SectionTitle>
         <SectionDescription>
           Reusable UI components that follow the design tokens above.
@@ -685,8 +747,80 @@ export const DesignSystem = () => {
         </ComponentGrid>
       </Section>
 
+      {/* Animations */}
+      <Section ref={reveal}>
+        <SectionTitle>Animations</SectionTitle>
+        <SectionDescription>
+          Keyframe animations for entrances, attention, and feedback. All loop
+          here for preview. In production, most would run once on mount.
+        </SectionDescription>
+        <Divider />
+
+        <AnimationGrid>
+          <AnimationCard>
+            <ShakeDemo>👋</ShakeDemo>
+            <AnimationLabel>Shake</AnimationLabel>
+            <AnimationSpec>3s / ease-in-out / infinite</AnimationSpec>
+          </AnimationCard>
+
+          <AnimationCard>
+            <FadeInDemo>A</FadeInDemo>
+            <AnimationLabel>Fade In</AnimationLabel>
+            <AnimationSpec>2s / ease</AnimationSpec>
+          </AnimationCard>
+
+          <AnimationCard>
+            <SlideUpDemo>B</SlideUpDemo>
+            <AnimationLabel>Slide Up</AnimationLabel>
+            <AnimationSpec>2s / ease / translateY(16px)</AnimationSpec>
+          </AnimationCard>
+
+          <AnimationCard>
+            <PulseDemo>C</PulseDemo>
+            <AnimationLabel>Pulse</AnimationLabel>
+            <AnimationSpec>2s / ease-in-out / infinite</AnimationSpec>
+          </AnimationCard>
+
+          <AnimationCard>
+            <ScaleInDemo>D</ScaleInDemo>
+            <AnimationLabel>Scale In</AnimationLabel>
+            <AnimationSpec>2s / ease / scale(0.9)</AnimationSpec>
+          </AnimationCard>
+        </AnimationGrid>
+
+        <SubSection>
+          <SubSectionTitle>Transition Durations</SubSectionTitle>
+          <SectionDescription>
+            Hover each box to preview the transition speed. The global default
+            is 0.3s.
+          </SectionDescription>
+          <TransitionRow>
+            <TransitionItem>
+              <TransitionBox $duration="0.1s" />
+              <TransitionLabel>0.1s</TransitionLabel>
+            </TransitionItem>
+            <TransitionItem>
+              <TransitionBox $duration="0.2s" />
+              <TransitionLabel>0.2s</TransitionLabel>
+            </TransitionItem>
+            <TransitionItem>
+              <TransitionBox $duration="0.3s" />
+              <TransitionLabel>0.3s</TransitionLabel>
+            </TransitionItem>
+            <TransitionItem>
+              <TransitionBox $duration="0.5s" />
+              <TransitionLabel>0.5s</TransitionLabel>
+            </TransitionItem>
+            <TransitionItem>
+              <TransitionBox $duration="1s" />
+              <TransitionLabel>1s</TransitionLabel>
+            </TransitionItem>
+          </TransitionRow>
+        </SubSection>
+      </Section>
+
       {/* Experience Card */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Experience Card</SectionTitle>
         <SectionDescription>
           An expandable card used on the home page to showcase work history.
@@ -705,7 +839,7 @@ export const DesignSystem = () => {
       </Section>
 
       {/* Spacing */}
-      <Section>
+      <Section ref={reveal}>
         <SectionTitle>Spacing</SectionTitle>
         <SectionDescription>
           A consistent spacing scale used for margins, padding, and gaps
