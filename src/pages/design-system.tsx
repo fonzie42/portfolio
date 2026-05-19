@@ -917,11 +917,14 @@ export const DesignSystem = () => {
 
         <Experience
           title="Engineering Manager at Ravn"
-          months={4}
+          startDate="2026-02"
+          endDate={null}
           industries={["consultancy", "AI", "mobile"]}
           tags={["engineering management", "React Native", "Expo", "NestJS"]}
           shortText="First Engineering Manager at Ravn, defining the role from scratch while leading multiple concurrent client engagements."
-          text="Serving as the first Engineering Manager at Ravn, a software consultancy, building the role and its frameworks from scratch. Leading a cross-functional team across multiple concurrent client engagements simultaneously, each with distinct tech stacks and stakeholder dynamics."
+          paragraphs={[
+            "Serving as the first Engineering Manager at Ravn, a software consultancy, building the role and its frameworks from scratch. Leading a cross-functional team across multiple concurrent client engagements simultaneously, each with distinct tech stacks and stakeholder dynamics.",
+          ]}
         />
       </Section>
 

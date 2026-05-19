@@ -59,7 +59,7 @@ export const Home = () => {
       </ExperienceWrapper>
 
       {EXPERIENCES.map((item) => (
-        <Experience {...item} />
+        <Experience key={item.title} {...item} />
       ))}
 
       <Header6 color="primary-alt">
