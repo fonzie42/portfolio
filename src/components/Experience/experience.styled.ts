@@ -42,7 +42,24 @@ export const ExperienceMeta = styled.div`
 `;
 
 export const ExperienceTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
   margin-top: 12px;
+`;
+
+export const MoreTagsBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  border-radius: 16px;
+  color: ${({ theme }) => theme.accent3};
+  background: transparent;
+  border: 2px solid ${({ theme }) => theme.accent4};
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
 `;
 
 export const Chevron = styled.button<{ $expanded: boolean }>`

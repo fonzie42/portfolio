@@ -8,25 +8,33 @@ import {
   ExperienceHeader,
   ExperienceMeta,
   ExperienceTags,
+  MoreTagsBadge,
   Chevron,
   ExperienceBody,
   ExperienceBodyInner,
   ExperienceContent,
 } from "./experience.styled";
 
+const DEFAULT_COLLAPSED_TAG_COUNT = 3;
+
 export const Experience: FC<ExperienceProps> = ({
   title,
   industries,
   months,
   tags,
+  collapsedTagCount,
   text,
   shortText,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const tagLimit = collapsedTagCount ?? DEFAULT_COLLAPSED_TAG_COUNT;
 
   const handleHeaderClick = () => {
     if (!isExpanded) setIsExpanded(true);
   };
+
+  const visibleTags = isExpanded ? tags : tags.slice(0, tagLimit);
+  const hiddenCount = tags.length - tagLimit;
 
   return (
     <ExperienceCard $expanded={isExpanded}>
@@ -42,9 +50,12 @@ export const Experience: FC<ExperienceProps> = ({
             </Header6>
           </ExperienceMeta>
           <ExperienceTags>
-            {tags.map((tag) => (
+            {visibleTags.map((tag) => (
               <Badge key={tag} label={tag} />
             ))}
+            {!isExpanded && hiddenCount > 0 && (
+              <MoreTagsBadge>+{hiddenCount}</MoreTagsBadge>
+            )}
           </ExperienceTags>
           <Paragraph style={{ margin: "12px 0 0" }}>{shortText}</Paragraph>
         </ExperienceHeader>

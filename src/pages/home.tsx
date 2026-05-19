@@ -55,7 +55,7 @@ export const Home = () => {
       </Paragraph>
 
       <ExperienceWrapper>
-        <Header2>My Recent Experiences</Header2>
+        <Header2>Experience</Header2>
       </ExperienceWrapper>
 
       {EXPERIENCES.map((item) => (
