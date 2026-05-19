@@ -77,71 +77,71 @@ const animating = css`
   .frame {
     ${hidden}
     ${groupBase}
-    animation: ${frameIn} 0.5s ease-out forwards;
+    animation: ${frameIn} 0.2s ease-out forwards;
   }
 
   .body {
     ${groupBase}
-    animation: ${bodyGroupIn} 0.8s ease-out 0.3s both;
+    animation: ${bodyGroupIn} 0.3s ease-out 0.1s both;
   }
 
   .body-fill {
     ${hidden}
-    animation: ${fadeIn} 0.4s ease-out 1s forwards;
+    animation: ${fadeIn} 0.2s ease-out 0.4s forwards;
   }
 
   .ring-3 {
     ${hidden}
-    animation: ${fadeIn} 0.35s ease-out 0.4s forwards;
+    animation: ${fadeIn} 0.15s ease-out 0.15s forwards;
   }
   .ring-2 {
     ${hidden}
-    animation: ${fadeIn} 0.35s ease-out 0.6s forwards;
+    animation: ${fadeIn} 0.15s ease-out 0.25s forwards;
   }
   .ring-1 {
     ${hidden}
-    animation: ${fadeIn} 0.35s ease-out 0.8s forwards;
+    animation: ${fadeIn} 0.15s ease-out 0.35s forwards;
   }
 
   .wave-4 {
     ${hidden}
-    animation: ${overlayIn} 0.35s ease-out 0.4s forwards;
+    animation: ${overlayIn} 0.15s ease-out 0.15s forwards;
   }
   .wave-3 {
     ${hidden}
-    animation: ${overlayIn} 0.35s ease-out 0.55s forwards;
+    animation: ${overlayIn} 0.15s ease-out 0.25s forwards;
   }
   .wave-2 {
     ${hidden}
-    animation: ${overlayIn} 0.35s ease-out 0.7s forwards;
+    animation: ${overlayIn} 0.15s ease-out 0.3s forwards;
   }
   .wave-1 {
     ${hidden}
-    animation: ${overlayIn} 0.35s ease-out 0.85s forwards;
+    animation: ${overlayIn} 0.15s ease-out 0.35s forwards;
   }
 
   .beak {
     ${hidden}
     ${groupBase}
-    animation: ${beakIn} 0.45s ease-out 1.15s forwards;
+    animation: ${beakIn} 0.2s ease-out 0.5s forwards;
   }
 
   .eye {
     ${hidden}
     ${groupBase}
-    animation: ${eyeIn} 0.4s ease-out 1.3s forwards;
+    animation: ${eyeIn} 0.2s ease-out 0.55s forwards;
   }
 
   .ornament-left {
     ${hidden}
     ${groupBase}
-    animation: ${ornamentLeftIn} 0.5s ease-out 1.5s forwards;
+    animation: ${ornamentLeftIn} 0.25s ease-out 0.65s forwards;
   }
 
   .ornament-right {
     ${hidden}
     ${groupBase}
-    animation: ${ornamentRightIn} 0.5s ease-out 1.7s forwards;
+    animation: ${ornamentRightIn} 0.25s ease-out 0.65s forwards;
   }
 `;
 
@@ -174,19 +174,19 @@ export const AnimatedSvg = styled.svg<{
     $bodyFirst &&
     css`
       .body-fill {
-        animation: ${fadeIn} 0.4s ease-out 0.4s forwards;
+        animation: ${fadeIn} 0.2s ease-out 0.15s forwards;
       }
       .wave-4 {
-        animation: ${overlayIn} 0.35s ease-out 0.7s forwards;
+        animation: ${overlayIn} 0.15s ease-out 0.3s forwards;
       }
       .wave-3 {
-        animation: ${overlayIn} 0.35s ease-out 0.85s forwards;
+        animation: ${overlayIn} 0.15s ease-out 0.35s forwards;
       }
       .wave-2 {
-        animation: ${overlayIn} 0.35s ease-out 1s forwards;
+        animation: ${overlayIn} 0.15s ease-out 0.4s forwards;
       }
       .wave-1 {
-        animation: ${overlayIn} 0.35s ease-out 1.15s forwards;
+        animation: ${overlayIn} 0.15s ease-out 0.45s forwards;
       }
     `}
 
@@ -195,23 +195,23 @@ export const AnimatedSvg = styled.svg<{
     css`
       .wave-1 {
         animation:
-          ${overlayIn} 0.35s ease-out 0.85s forwards,
-          ${wave} 2.5s ease-in-out 2.4s infinite;
+          ${overlayIn} 0.15s ease-out 0.35s forwards,
+          ${wave} 2.5s ease-in-out 1.0s infinite;
       }
       .wave-2 {
         animation:
-          ${overlayIn} 0.35s ease-out 0.7s forwards,
-          ${wave} 2.5s ease-in-out 2.1s infinite;
+          ${overlayIn} 0.15s ease-out 0.3s forwards,
+          ${wave} 2.5s ease-in-out 0.9s infinite;
       }
       .wave-3 {
         animation:
-          ${overlayIn} 0.35s ease-out 0.55s forwards,
-          ${wave} 2.5s ease-in-out 1.8s infinite;
+          ${overlayIn} 0.15s ease-out 0.25s forwards,
+          ${wave} 2.5s ease-in-out 0.8s infinite;
       }
       .wave-4 {
         animation:
-          ${overlayIn} 0.35s ease-out 0.4s forwards,
-          ${wave} 2.5s ease-in-out 1.5s infinite;
+          ${overlayIn} 0.15s ease-out 0.15s forwards,
+          ${wave} 2.5s ease-in-out 0.7s infinite;
       }
 
       .leaf-left-1,
@@ -222,24 +222,24 @@ export const AnimatedSvg = styled.svg<{
         transform-origin: center bottom;
       }
       .leaf-left-1 {
-        animation: ${leafSwayLeft} 5s ease-in-out 2s infinite;
+        animation: ${leafSwayLeft} 5s ease-in-out 0.75s infinite;
       }
       .leaf-left-2 {
-        animation: ${leafSwayLeft} 5.4s ease-in-out 2.3s infinite;
+        animation: ${leafSwayLeft} 5.4s ease-in-out 0.9s infinite;
       }
       .leaf-right-1 {
-        animation: ${leafSwayRight} 5.2s ease-in-out 2.1s infinite;
+        animation: ${leafSwayRight} 5.2s ease-in-out 0.8s infinite;
       }
       .leaf-right-2 {
-        animation: ${leafSwayRight} 4.8s ease-in-out 2.4s infinite;
+        animation: ${leafSwayRight} 4.8s ease-in-out 0.95s infinite;
       }
 
       .eye {
         transform-box: fill-box;
         transform-origin: center;
         animation:
-          ${eyeIn} 0.4s ease-out 1.3s forwards,
-          ${blink} 5.5s ease-in-out 3s infinite;
+          ${eyeIn} 0.2s ease-out 0.55s forwards,
+          ${blink} 5.5s ease-in-out 1.5s infinite;
       }
     `}
 
