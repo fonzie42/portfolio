@@ -18,7 +18,7 @@ Path aliases are configured via `tsconfig.json` (`baseUrl: "src"`) and resolved 
 
 - `src/components/` - reusable components (AnimatedMingoLogo, Experience)
 - `src/pages/` - route-level page components
-- `src/ui/` - design primitives: colors, typography, micro-interactions, Badge, Toggle
+- `src/ui/` - design primitives: colors, typography, micro-interactions, Badge, Toggle, Logo, Shake
 - `src/theme/` - global styles and responsive media query helpers
 - `src/context/` - ThemeContextProvider (light/dark mode)
 - `src/constants.ts` - work experience data

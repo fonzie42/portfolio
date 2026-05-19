@@ -57,6 +57,8 @@ src/
     colors.ts             # Light and dark color palettes
     typography.ts         # Styled text components (H0-H6, P, Code)
     micro-interactions.ts # Reusable animation mixins
+    logo.ts               # Styled logo image component
+    shake.ts              # Shake animation component
     Badge/                # Badge component
     Toggle/               # Theme toggle component
 ```
